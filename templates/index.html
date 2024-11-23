@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big Mart Sales Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 50%;
+            margin: 100px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="submit"] {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        input[type="submit"] {
+            background-color: #28a745;
+            color: #fff;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Big Mart Sales Prediction</h2>
+        <form action="/predict" method="post">
+            <label for="item_identifier">Item Identifier:</label>
+            <input type="number" name="item_identifier" id="item_identifier" required>
+
+            <label for="item_weight">Item Weight:</label>
+            <input type="text" name="item_weight" id="item_weight" required>
+
+            <label for="item_fat_content">Item Fat Content (0: Low Fat, 1: Regular):</label>
+            <input type="number" name="item_fat_content" id="item_fat_content" required>
+
+            <label for="item_visibility">Item Visibility:</label>
+            <input type="text" name="item_visibility" id="item_visibility" required>
+
+            <label for="item_type">Item Type:</label>
+            <input type="number" name="item_type" id="item_type" required>
+
+            <label for="item_mrp">Item MRP:</label>
+            <input type="text" name="item_mrp" id="item_mrp" required>
+
+            <label for="outlet_identifier">Outlet Identifier:</label>
+            <input type="number" name="outlet_identifier" id="outlet_identifier" required>
+
+            <label for="outlet_establishment_year">Outlet Establishment Year:</label>
+            <input type="number" name="outlet_establishment_year" id="outlet_establishment_year" required>
+
+            <label for="outlet_size">Outlet Size (0: Small, 1: Medium, 2: High):</label>
+            <input type="number" name="outlet_size" id="outlet_size" required>
+
+            <label for="outlet_location_type">Outlet Location Type (0: Tier 1, 1: Tier 2, 2: Tier 3):</label>
+            <input type="number" name="outlet_location_type" id="outlet_location_type" required>
+
+            <label for="outlet_type">Outlet Type (0: Grocery Store, 1: Supermarket Type1, 2: Supermarket Type2, 3: Supermarket Type3):</label>
+            <input type="number" name="outlet_type" id="outlet_type" required>
+
+            <input type="submit" value="Predict">
+        </form>
+        {% if prediction_text %}
+        <h3>{{ prediction_text }}</h3>
+        {% endif %}
+    </div>
+</body>
+</html>
